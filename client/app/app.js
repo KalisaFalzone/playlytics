@@ -1,0 +1,1 @@
+angular.module('playlytics', ['ui.router', 'spotify'])
