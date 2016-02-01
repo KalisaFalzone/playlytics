@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="playlytics">
 <head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/angucomplete-alt.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <title></title>
@@ -8,13 +9,20 @@
 </head>
 <body>
 <navbar></navbar>
-<search-form></search-form>
-<div ui-view></div>
+<div class="row">
+  <div class="col-md-3">
+    <search-form></search-form>
+  </div>
+  <div class="col-md-9">
+    <div ui-view></div>
+  </div>
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.1.0/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.17/angular-ui-router.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/2.2.0/angucomplete-alt.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <!-- template files -->
   <script src="app/app.js"></script>
