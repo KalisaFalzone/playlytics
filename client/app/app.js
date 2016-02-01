@@ -1,1 +1,1 @@
-angular.module('playlytics', ['ui.router', 'spotify'])
+angular.module('playlytics', ['ui.router'])

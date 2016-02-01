@@ -5,16 +5,21 @@
 
 </head>
 <body>
+<navbar></navbar>
+<search-form></search-form>
+<div ui-view></div>
 
-<div ng-controller="mainController"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angucomplete-alt/2.2.0/angucomplete-alt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.17/angular-ui-router.min.js"></script>
 
-
-
-
-  <script src="../bower_components/angular/angular.min.js"></script>
-  <script src="../bower_components/angular-spotify/dist/angular-spotify.min.js"></script>
-  <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- template files -->
   <script src="app/app.js"></script>
-  <script src="app/mainController.js"></script>
+  <script src="app/navbar/navbarDirective.js"></script>
+  <script src="app/searchForm/searchFormDirective.js"></script>
+  <script src="app/myPlaylists/myPlaylistsController.js"></script>
+  <script src="app/playlist/playlistController.js"></script>
+  <script src="app/config.js"></script>
+
 </body>
 </html>
