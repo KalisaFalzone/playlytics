@@ -8,7 +8,6 @@ angular.module('playlytics')
     scope: {},
     templateUrl: 'app/navbar/navbarTemplate.html',
     link: function(scope, element, attributes) {
-      console.log('navbar link loading');
     }
   };
 }]);
