@@ -1,1 +1,1 @@
-angular.module('playlytics', ['ui.router'])
+angular.module('playlytics', ['ui.router', 'angucomplete-alt'])

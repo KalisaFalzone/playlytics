@@ -1,4 +1,20 @@
 <div>
-  <!-- <input type="search" ng-model="main.searchInfo.address" id='search-text' placeholder="Search for a song" required> -->
-  <h3>SearchForm html</h3>
+  <h3>Search Spotify</h3>
+
+<div angucomplete-alt
+  id="ex5"
+  placeholder="Search for a song"
+  pause="500"
+  selected-object="selectedProject"
+  remote-url="https://api.spotify.com/v1/search"
+  remote-url-request-formatter="requestFn"
+  remote-url-response-formatter="responseFn"
+  remote-url-data-field="tracks.items"
+  title-field="artistName"
+  description-field="name"
+  minlength="2"
+  input-class="form-control form-control-small"
+  match-class="highlight">
+</div>
+
 </div>
