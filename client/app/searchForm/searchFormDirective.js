@@ -1,8 +1,7 @@
 angular.module('playlytics')
 
-.directive('searchForm', [function(){
+.controller('searchFormController', ['$scope', function($scope){
 
-  var controller = ['$scope', function($scope){
 
     $scope.responseFn = function(response) {
 
@@ -29,18 +28,22 @@ angular.module('playlytics')
         $scope.selectedSong.duration = songSelected.originalObject.duration_ms;
         $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
         console.log('selectedSong', $scope.selectedSong);
-
       } else {
         console.log('pick a song');
       }
 
     }
-  }]
+  }])
+
+.directive('searchForm', [function(){
+
+
 
   return {
     restrict: 'E',
     replace: true,
     templateUrl: 'app/searchForm/searchFormTemplate.html',
-    controller: controller
+    controller: 'searchFormController'
   };
-}]);
+}])
+
