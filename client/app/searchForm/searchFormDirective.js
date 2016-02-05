@@ -1,7 +1,6 @@
 angular.module('playlytics')
 
-.controller('searchFormController', ['$scope', function($scope){
-
+.controller('searchFormController', ['$scope', 'analytics', function($scope, analytics){
 
     $scope.responseFn = function(response) {
 
@@ -21,23 +20,17 @@ angular.module('playlytics')
 
     $scope.selectAction = function(songSelected) {
       $scope.selectedSong = {};
-      if (songSelected) {
-        console.log('chosen song:', songSelected);
-        $scope.selectedSong.title = songSelected.title;
-        $scope.selectedSong.artistName = songSelected.originalObject.artistName;
-        $scope.selectedSong.duration = songSelected.originalObject.duration_ms;
-        $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
-        console.log('selectedSong', $scope.selectedSong);
-      } else {
-        console.log('pick a song');
-      }
-
+      console.log('chosen song:', songSelected);
+      $scope.selectedSong.title = songSelected.title;
+      $scope.selectedSong.artistName = songSelected.originalObject.artistName;
+      $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
+      $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
+      $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
+      console.log('selectedSong', $scope.selectedSong);
     }
   }])
 
 .directive('searchForm', [function(){
-
-
 
   return {
     restrict: 'E',
