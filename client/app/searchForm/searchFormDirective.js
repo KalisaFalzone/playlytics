@@ -1,33 +1,34 @@
 angular.module('playlytics')
 
-.controller('searchFormController', ['$scope', 'analytics', function($scope, analytics){
+.controller('searchFormController', ['$scope', 'analytics', 'localStorageFactory', function($scope, analytics, localStorageFactory){
+  $scope.selectedSong = {};
+  $scope.playlistName = 'test';
 
-    $scope.responseFn = function(response) {
+  //factory functions
+  $scope.createPlaylist = localStorageFactory.createPlaylist;
 
-      response.tracks.items.forEach(function(item) {
-        item.artistName = item.artists[0].name;
-        item.albumName = item.album.name;
-      })
+  $scope.responseFn = function(response) {
+    response.tracks.items.forEach(function(item) {
+      item.artistName = item.artists[0].name;
+      item.albumName = item.album.name;
+    })
+    return response;
+  }
 
-      return response;
-    }
+  $scope.requestFn = function(query) {
+    return { "q": query, "type":"track" }
+  }
 
-    $scope.requestFn = function(query) {
-      return { "q": query, "type":"track" }
-    }
-
+  $scope.selectAction = function(songSelected) {
     $scope.selectedSong = {};
-
-    $scope.selectAction = function(songSelected) {
-      $scope.selectedSong = {};
-      console.log('chosen song:', songSelected);
-      $scope.selectedSong.title = songSelected.title;
-      $scope.selectedSong.artistName = songSelected.originalObject.artistName;
-      $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
-      $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
-      $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
-      console.log('selectedSong', $scope.selectedSong);
-    }
+    console.log('chosen song:', songSelected);
+    $scope.selectedSong.title = songSelected.title;
+    $scope.selectedSong.artistName = songSelected.originalObject.artistName;
+    $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
+    $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
+    $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
+    console.log('selectedSong', $scope.selectedSong);
+  }
   }])
 
 .directive('searchForm', [function(){
