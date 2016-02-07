@@ -26,15 +26,16 @@
   </div>
     <hr></hr>
 
-    <h3 class="header"> Add to Playlist:</h3>
-    <select>
-      <option >Playlist1</option>
-      <option >Playlist2</option>
-      <option >Playlist3</option>
-      <option >Playlist4</option>
-    </select>
-    <hr></hr>
+    <div>
+      <form name="playListSelector">
+      <h3 for="playlistSelector"> Add to Playlist: </h3>
+      <select name="playlistSelector" id="playlist.selector" ng-model="selectedPlaylist">
+        <option ng-repeat="(key, value) in myPlaylists" value="{{key}}">{{key}}</option>
+      </select>
+      </form>
+    </div>
 
+    <hr></hr>
     <h3 class="header">Create a Playlist</h3>
 
     <form>
@@ -46,5 +47,3 @@
   </div>
 
 </div>
-
-

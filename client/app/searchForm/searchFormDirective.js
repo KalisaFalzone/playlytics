@@ -1,11 +1,14 @@
 angular.module('playlytics')
 
-.controller('searchFormController', ['$scope', 'analytics', 'localStorageFactory', function($scope, analytics, localStorageFactory){
+.controller('searchFormController', ['$scope', 'analytics', 'playlistFactory', function($scope, analytics, playlistFactory){
   $scope.selectedSong = {};
   $scope.playlistName = 'test';
 
   //factory functions
-  $scope.createPlaylist = localStorageFactory.createPlaylist;
+  $scope.createPlaylist = playlistFactory.createPlaylist;
+  //$scope.playlistList = playlistFactory.playlistList;
+  $scope.myPlaylists = playlistFactory.myPlaylists;
+  $scope.selectedPlaylist = null;
 
   $scope.responseFn = function(response) {
     response.tracks.items.forEach(function(item) {
@@ -40,4 +43,3 @@ angular.module('playlytics')
     controller: 'searchFormController'
   };
 }])
-

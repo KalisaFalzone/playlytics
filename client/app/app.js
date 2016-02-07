@@ -1,1 +1,1 @@
-angular.module('playlytics', ['ui.router', 'angucomplete-alt'])
+angular.module('playlytics', ['ngStorage', 'ui.router', 'angucomplete-alt'])
