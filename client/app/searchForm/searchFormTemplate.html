@@ -32,7 +32,7 @@
       <div>
         <form name="playListSelector">
         <h3 class="header" for="playlistSelector"> Add to Playlist: </h3>
-        <select name="playlistSelector" id="playlist.selector" ng-model="selectedPlaylist">
+        <select name="playlistSelector" id="playlist.selector" ng-model="selectedPlaylist" ng-change="addSong()">
           <option ng-repeat="(key, value) in myPlaylists" value="{{key}}">{{key}}</option>
         </select>
         </form>
@@ -43,9 +43,9 @@
     <h3 class="header">Create a Playlist</h3>
 
     <form>
-      <input type="text" placeholder="Playlist title" ng-Model="playlistName">
+      <input type="text" placeholder="Playlist title" ng-Model="playlistName" class="form-input">
       </input>
-      <input type="submit" value="Submit" ng-click="createPlaylist(playlistName)">
+      <input type="submit" value="Submit" class="submit-button" ng-click="createPlaylist(playlistName)">
     </form>
 
   </div>
