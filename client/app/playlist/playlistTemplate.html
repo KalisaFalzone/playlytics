@@ -1,5 +1,32 @@
 <div>
 
-  <h3 class="header">Playlist Details</h3>
+  <h3 class="header">{{playlistName}}</h3>
+  <a class="header" ui-sref="myPlaylists">Back to all My Playlists</a>
+  <hr></hr>
+  <div class="row">
+    <div class="col-md-1"><span class="songdetails">Move</span></div>
+    <div class="col-md-3"><span class="songdetails">Artist</span></div>
+    <div class="col-md-3"><span class="songdetails">Song Title</span></div>
+    <div class="col-md-2"><span class="songdetails">Length</span></div>
+    <div class="col-md-2"><span class="songdetails">Popularity</span></div>
+    <div class="col-md-1"><span class="songdetails">Delete</span></div>
+  </div>
+  <hr></hr>
+
+  <div class="playlist-song">
+    <div ng-repeat="song in playlist">
+      <div class="row">
+        <div class="col-md-1">Arrows</div>
+        <div class="col-md-3">{{song.artistName}}</div>
+        <div class="col-md-3">{{song.title}}</div>
+        <div class="col-md-2">
+            <span ng-if="song.duration.hours != 0">{{song.duration}} hours </span>
+            {{song.duration.minutes}}:{{song.duration.seconds}} </div>
+        <div class="col-md-2"> {{song.songPopularity}}</div>
+        <div class="col-md-1">X</div>
+      </div>
+      <hr></hr>
+    </div>
+  </div>
 
 </div>
