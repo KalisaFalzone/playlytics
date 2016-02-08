@@ -1,12 +1,11 @@
 angular.module('playlytics')
 
 .controller('searchFormController', ['$scope', 'analytics', 'playlistFactory', function($scope, analytics, playlistFactory){
-  $scope.selectedSong = {};
-  $scope.playlistName = 'test';
+  $scope.selectedSong = null;
+  $scope.playlistName;
 
   //factory functions
   $scope.createPlaylist = playlistFactory.createPlaylist;
-  //$scope.playlistList = playlistFactory.playlistList;
   $scope.myPlaylists = playlistFactory.myPlaylists;
   $scope.selectedPlaylist = null;
 

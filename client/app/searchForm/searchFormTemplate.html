@@ -1,38 +1,42 @@
 <div>
 
   <div class="search-container" ng-controller="searchFormController">
-  <h3 class="header">Search Spotify</h3>
-    <div angucomplete-alt
-      id="search-form"
-      placeholder="Search for a song"
-      pause="500"
-      selected-object="selectAction"
-      remote-url="https://api.spotify.com/v1/search"
-      remote-url-request-formatter="requestFn"
-      remote-url-response-formatter="responseFn"
-      remote-url-data-field="tracks.items"
-      title-field="name"
-      description-field="artistName"
-      minlength="2"
-      input-class="form-control form-control-small"
-      match-class="highlight">
-    </div>
+    <h3 class="header">Search Spotify</h3>
+      <div angucomplete-alt
+        id="search-form"
+        placeholder="Search for a song"
+        pause="500"
+        selected-object="selectAction"
+        remote-url="https://api.spotify.com/v1/search"
+        remote-url-request-formatter="requestFn"
+        remote-url-response-formatter="responseFn"
+        remote-url-data-field="tracks.items"
+        title-field="name"
+        description-field="artistName"
+        minlength="2"
+        input-class="form-control form-control-small"
+        match-class="highlight">
+      </div>
+    <div ng-show="selectedSong">
     <hr></hr>
-  <div> <span class="song-details">Song Details</span>
-    <div class="artist">Artist: {{selectedSong.artistName}}</div>
-    <div class="songtitle">Song Title: {{selectedSong.title}}</div>
-    <div class="songtitle">Length: {{selectedSong.duration}}</div>
-    <div class="songtitle">Popularity: {{selectedSong.songPopularity}}</div>
-  </div>
-    <hr></hr>
-
-    <div>
-      <form name="playListSelector">
-      <h3 for="playlistSelector"> Add to Playlist: </h3>
-      <select name="playlistSelector" id="playlist.selector" ng-model="selectedPlaylist">
-        <option ng-repeat="(key, value) in myPlaylists" value="{{key}}">{{key}}</option>
-      </select>
-      </form>
+      <div>
+        <h3 class="header">Song Details</h3>
+        <div><span class="songdetails">Artist:</span> {{selectedSong.artistName}}</div>
+        <div><span class="songdetails">Song Title:</span> {{selectedSong.title}}</div>
+        <div><span class="songdetails">Length:</span>
+        <span ng-if="selectedSong.duration.hours != 0">{{selectedSong.duration}} hours </span>
+        {{selectedSong.duration.minutes}}:{{selectedSong.duration.seconds}} </div>
+        <div><span class="songdetails">Popularity:</span> {{selectedSong.songPopularity}}</div>
+      </div>
+      <hr></hr>
+      <div>
+        <form name="playListSelector">
+        <h3 class="header" for="playlistSelector"> Add to Playlist: </h3>
+        <select name="playlistSelector" id="playlist.selector" ng-model="selectedPlaylist">
+          <option ng-repeat="(key, value) in myPlaylists" value="{{key}}">{{key}}</option>
+        </select>
+        </form>
+      </div>
     </div>
 
     <hr></hr>

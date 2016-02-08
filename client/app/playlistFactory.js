@@ -1,6 +1,6 @@
 angular.module('playlytics')
 
-.factory('playlistFactory', ['$localStorage', function ($localStorage){
+.factory('playlistFactory', ['$localStorage', '$state', function ($localStorage, $state){
 
   var storage = $localStorage.$default({myPlaylists: {}})
 
@@ -12,12 +12,20 @@ angular.module('playlytics')
     }
   }
 
+  var displayPlaylist = function(pl) {
+    console.log('playlist selected', pl)
+
+    $state.go('playlist')
+
+  }
+
   var addSong = function(song) {
 
   }
 
   return {
       createPlaylist: createPlaylist,
-      myPlaylists: storage.myPlaylists
+      myPlaylists: storage.myPlaylists,
+      displayPlaylist: displayPlaylist
     }
 }]);

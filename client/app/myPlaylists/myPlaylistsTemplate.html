@@ -1,3 +1,11 @@
 <div>
-  <h3>myPlaylists html</h3>
+
+  <div class="header">
+    <h3>My Playlists</h3>
+
+    <div ng-repeat="(key, value) in myPlaylists" value="{{key}}" ng-click="displayPlaylist(key)">{{key}}
+
+    </div>
+  </div>
+
 </div>
