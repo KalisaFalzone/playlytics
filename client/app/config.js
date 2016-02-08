@@ -13,7 +13,7 @@ angular.module('playlytics')
       templateUrl: "app/myPlaylists/myPlaylistsTemplate.html"
     })
     .state('playlist', {
-      url: "/playlist",
+      url: "/playlist/:displayedPlaylist",
       controller: 'playlistController',
       templateUrl: "app/playlist/playlistTemplate.html",
     });

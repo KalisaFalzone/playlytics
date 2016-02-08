@@ -12,20 +12,9 @@ angular.module('playlytics')
     }
   }
 
-  var displayPlaylist = function(pl) {
-    console.log('playlist selected', pl)
-
-    $state.go('playlist')
-
-  }
-
-  var addSong = function(song) {
-
-  }
-
   return {
       createPlaylist: createPlaylist,
       myPlaylists: storage.myPlaylists,
-      displayPlaylist: displayPlaylist
     }
+
 }]);

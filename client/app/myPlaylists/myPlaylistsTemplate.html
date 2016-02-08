@@ -3,8 +3,8 @@
   <div class="header">
     <h3>My Playlists</h3>
 
-    <div ng-repeat="(key, value) in myPlaylists" value="{{key}}" ng-click="displayPlaylist(key)">{{key}}
-
+    <div class="header" ng-repeat="(key, value) in myPlaylists" value="{{key}}">
+      <a ui-sref="playlist({displayedPlaylist: key})">{{key}}</a>
     </div>
   </div>
 

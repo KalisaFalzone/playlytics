@@ -1,6 +1,6 @@
 angular.module('playlytics')
 
-.controller('searchFormController', ['$scope', 'analytics', 'playlistFactory', function($scope, analytics, playlistFactory){
+.controller('searchFormController', ['$scope', 'analytics', 'playlistFactory', '$localStorage', function($scope, analytics, playlistFactory, $localStorage){
   $scope.selectedSong = null;
   $scope.playlistName;
 
@@ -9,6 +9,7 @@ angular.module('playlytics')
   $scope.myPlaylists = playlistFactory.myPlaylists;
   $scope.selectedPlaylist = null;
 
+  //for autocomplete form
   $scope.responseFn = function(response) {
     response.tracks.items.forEach(function(item) {
       item.artistName = item.artists[0].name;
@@ -16,21 +17,25 @@ angular.module('playlytics')
     })
     return response;
   }
-
   $scope.requestFn = function(query) {
     return { "q": query, "type":"track" }
   }
 
+  //to select a song from the autocomplete form
   $scope.selectAction = function(songSelected) {
     $scope.selectedSong = {};
-    console.log('chosen song:', songSelected);
     $scope.selectedSong.title = songSelected.title;
     $scope.selectedSong.artistName = songSelected.originalObject.artistName;
     $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
     $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
     $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
-    console.log('selectedSong', $scope.selectedSong);
   }
+
+  //to add a song to a playlist
+  $scope.addSong = function() {
+    $localStorage.myPlaylists[$scope.selectedPlaylist].push($scope.selectedSong);
+  }
+
   }])
 
 .directive('searchForm', [function(){
