@@ -24,11 +24,13 @@ angular.module('playlytics')
   //to select a song from the autocomplete form
   $scope.selectAction = function(songSelected) {
     $scope.selectedSong = {};
-    $scope.selectedSong.title = songSelected.title;
-    $scope.selectedSong.artistName = songSelected.originalObject.artistName;
-    $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
-    $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
-    $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
+    if (songSelected) {
+      $scope.selectedSong.title = songSelected.title;
+      $scope.selectedSong.artistName = songSelected.originalObject.artistName;
+      $scope.selectedSong.miliseconds = songSelected.originalObject.duration_ms
+      $scope.selectedSong.duration = analytics.convertTime(songSelected.originalObject.duration_ms);
+      $scope.selectedSong.songPopularity = songSelected.originalObject.popularity;
+    }
   }
 
   //to add a song to a playlist

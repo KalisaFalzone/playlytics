@@ -16,14 +16,24 @@
   <div class="playlist-song">
     <div ng-repeat="song in playlist">
       <div class="row">
-        <div class="col-md-1">Arrows</div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-default btn-sm" ng-click="moveUp(playlistName, $index)">
+            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm" ng-click="moveDown(playlistName, $index)">
+            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
+          </button>
         <div class="col-md-3">{{song.artistName}}</div>
         <div class="col-md-3">{{song.title}}</div>
         <div class="col-md-2">
             <span ng-if="song.duration.hours != 0">{{song.duration}} hours </span>
-            {{song.duration.minutes}}:{{song.duration.seconds}} </div>
+            {{song.duration.minutes}}:{{song.duration.seconds}}</div>
         <div class="col-md-2"> {{song.songPopularity}}</div>
-        <div class="col-md-1">X</div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-default btn-sm" ng-click="deleteSong(playlistName,$index)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
       <hr></hr>
     </div>

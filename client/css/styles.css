@@ -36,3 +36,7 @@
   border-width: 1px;
   height: 35px;
 }
+
+.playlist-song {
+  vertical-align: text-center;
+}
